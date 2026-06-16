@@ -88,5 +88,13 @@ Also make the action fit the "${deal.stage}" stage. Reply with ONE concise sente
     }
   }
 
-  return { suggestions, loadingIds, suggestNextAction }
+  const clearSuggestion = (dealId) => {
+    setSuggestions(prev => {
+      const next = { ...prev }
+      delete next[dealId]
+      return next
+    })
+  }
+
+  return { suggestions, loadingIds, suggestNextAction, clearSuggestion }
 }

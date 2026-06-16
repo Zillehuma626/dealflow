@@ -9,7 +9,7 @@ import AddDealModal from './components/AddDealModal'
 export default function App() {
   const contactsApi = useContacts()
   const dealsApi = useDeals()
-  const { suggestions, loadingIds, suggestNextAction } = useGemini()
+  const { suggestions, loadingIds, suggestNextAction, clearSuggestion } = useGemini()
   const [showDealModal, setShowDealModal] = useState(false)
 
   return (
@@ -48,7 +48,10 @@ export default function App() {
             deals={dealsApi.deals}
             loading={dealsApi.loading}
             error={dealsApi.error}
-            onMoveStage={dealsApi.updateDealStage}
+            onMoveStage={async (id, stage) => {
+              await dealsApi.updateDealStage(id, stage)
+              clearSuggestion(id)
+            }}
             onDeleteDeal={dealsApi.deleteDeal}
             suggestions={suggestions}
             loadingIds={loadingIds}
