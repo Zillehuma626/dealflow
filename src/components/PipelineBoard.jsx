@@ -49,7 +49,7 @@ export default function PipelineBoard({
         return (
           <div
             key={stage}
-            className={`flex-shrink-0 w-72 bg-gray-900/50 border border-gray-800 border-t-2 ${STAGE_COLORS[stage]} rounded-lg flex flex-col max-h-full`}
+            className={`flex-shrink-0 w-[80vw] max-w-xs sm:w-72 sm:max-w-none bg-gray-900/50 border border-gray-800 border-t-2 ${STAGE_COLORS[stage]} rounded-lg flex flex-col max-h-full`}
           >
             <div className="px-3 py-2.5 flex items-center justify-between border-b border-gray-800">
               <div className="flex items-center gap-2">

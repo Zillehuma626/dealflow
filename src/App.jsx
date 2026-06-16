@@ -12,28 +12,35 @@ export default function App() {
   const { suggestions, loadingIds, suggestNextAction, clearSuggestion } = useGemini()
   const [showDealModal, setShowDealModal] = useState(false)
 
+  // Moving a deal clears its old AI suggestion, since that advice was
+  // generated for the previous stage and is no longer relevant.
+  const handleMoveStage = async (id, stage) => {
+    await dealsApi.updateDealStage(id, stage)
+    clearSuggestion(id)
+  }
+
   return (
-    <div className="h-screen flex flex-col">
+    <div className="min-h-screen md:h-screen flex flex-col">
       {/* Header */}
-      <header className="border-b border-gray-800 px-6 py-4 flex items-center justify-between flex-shrink-0">
-        <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 bg-indigo-600 rounded-md flex items-center justify-center text-sm font-bold">D</div>
-          <div>
+      <header className="border-b border-gray-800 px-4 md:px-6 py-3 md:py-4 flex items-center justify-between gap-3 flex-shrink-0">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <div className="w-7 h-7 bg-teal-600 rounded-md flex items-center justify-center text-sm font-bold flex-shrink-0">D</div>
+          <div className="min-w-0">
             <h1 className="text-lg font-bold text-white leading-none">DealFlow</h1>
-            <p className="text-xs text-gray-500 mt-0.5">Minimal CRM pipeline</p>
+            <p className="text-xs text-gray-500 mt-0.5 truncate">Minimal CRM pipeline</p>
           </div>
         </div>
         <button
           onClick={() => setShowDealModal(true)}
-          className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-4 py-2 rounded-lg transition-colors font-medium"
+          className="bg-teal-600 hover:bg-teal-500 text-white text-sm px-4 py-2 rounded-lg transition-colors font-medium flex-shrink-0"
         >
           + Add Deal
         </button>
       </header>
 
-      {/* Main layout: sidebar contacts + pipeline */}
-      <div className="flex-1 flex overflow-hidden">
-        <aside className="w-72 border-r border-gray-800 p-4 flex-shrink-0 overflow-hidden">
+      {/* Main layout: contacts stack on top on mobile, sidebar on desktop */}
+      <div className="flex-1 flex flex-col md:flex-row min-h-0">
+        <aside className="w-full md:w-72 flex-shrink-0 border-b md:border-b-0 md:border-r border-gray-800 p-4 max-h-[45vh] md:max-h-none overflow-hidden flex flex-col">
           <ContactsPanel
             contacts={contactsApi.contacts}
             loading={contactsApi.loading}
@@ -43,15 +50,12 @@ export default function App() {
           />
         </aside>
 
-        <main className="flex-1 p-4 overflow-hidden">
+        <main className="flex-1 min-h-0 p-3 md:p-4 overflow-hidden">
           <PipelineBoard
             deals={dealsApi.deals}
             loading={dealsApi.loading}
             error={dealsApi.error}
-            onMoveStage={async (id, stage) => {
-              await dealsApi.updateDealStage(id, stage)
-              clearSuggestion(id)
-            }}
+            onMoveStage={handleMoveStage}
             onDeleteDeal={dealsApi.deleteDeal}
             suggestions={suggestions}
             loadingIds={loadingIds}

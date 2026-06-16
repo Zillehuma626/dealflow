@@ -43,7 +43,7 @@ export default function AddDealModal({ contacts, onClose, onAdd }) {
             type="text"
             value={form.title}
             onChange={e => setForm(p => ({ ...p, title: e.target.value }))}
-            className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+            className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-teal-500"
             placeholder="Website redesign project"
             autoFocus
           />
@@ -56,7 +56,7 @@ export default function AddDealModal({ contacts, onClose, onAdd }) {
             min="0"
             value={form.value}
             onChange={e => setForm(p => ({ ...p, value: e.target.value }))}
-            className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+            className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-teal-500"
             placeholder="5000"
           />
         </div>
@@ -66,7 +66,7 @@ export default function AddDealModal({ contacts, onClose, onAdd }) {
           <select
             value={form.contact_id}
             onChange={e => setForm(p => ({ ...p, contact_id: e.target.value }))}
-            className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-indigo-500"
+            className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-teal-500"
           >
             {contacts.length === 0 && <option value="">No contacts — add one first</option>}
             {contacts.map(c => (
@@ -82,7 +82,7 @@ export default function AddDealModal({ contacts, onClose, onAdd }) {
           <select
             value={form.stage}
             onChange={e => setForm(p => ({ ...p, stage: e.target.value }))}
-            className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-indigo-500"
+            className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-teal-500"
           >
             {STAGES.map(s => <option key={s} value={s}>{s}</option>)}
           </select>
@@ -105,7 +105,7 @@ export default function AddDealModal({ contacts, onClose, onAdd }) {
           <button
             type="submit"
             disabled={submitting}
-            className="flex-1 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-sm py-2 rounded-lg transition-colors font-medium"
+            className="flex-1 bg-teal-600 hover:bg-teal-500 disabled:opacity-50 text-white text-sm py-2 rounded-lg transition-colors font-medium"
           >
             {submitting ? 'Saving...' : 'Add Deal'}
           </button>

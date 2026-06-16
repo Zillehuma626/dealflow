@@ -34,7 +34,7 @@ export default function ContactsPanel({ contacts, loading, error, onAdd, onDelet
         </h2>
         <button
           onClick={() => setShowModal(true)}
-          className="text-sm bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-lg transition-colors font-medium"
+          className="text-sm bg-teal-600 hover:bg-teal-500 text-white px-3 py-1.5 rounded-lg transition-colors font-medium"
         >
           + Add Contact
         </button>
@@ -100,7 +100,7 @@ export default function ContactsPanel({ contacts, loading, error, onAdd, onDelet
                 type="text"
                 value={form.name}
                 onChange={e => setForm(p => ({ ...p, name: e.target.value }))}
-                className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-teal-500"
                 placeholder="Jane Smith"
                 autoFocus
               />
@@ -111,7 +111,7 @@ export default function ContactsPanel({ contacts, loading, error, onAdd, onDelet
                 type="text"
                 value={form.company}
                 onChange={e => setForm(p => ({ ...p, company: e.target.value }))}
-                className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-teal-500"
                 placeholder="Acme Corp"
               />
             </div>
@@ -121,7 +121,7 @@ export default function ContactsPanel({ contacts, loading, error, onAdd, onDelet
                 type="email"
                 value={form.email}
                 onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
-                className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-teal-500"
                 placeholder="jane@acme.com"
               />
             </div>
@@ -143,7 +143,7 @@ export default function ContactsPanel({ contacts, loading, error, onAdd, onDelet
               <button
                 type="submit"
                 disabled={submitting}
-                className="flex-1 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-sm py-2 rounded-lg transition-colors font-medium"
+                className="flex-1 bg-teal-600 hover:bg-teal-500 disabled:opacity-50 text-white text-sm py-2 rounded-lg transition-colors font-medium"
               >
                 {submitting ? 'Saving...' : 'Add Contact'}
               </button>

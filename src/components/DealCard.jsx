@@ -31,7 +31,7 @@ export default function DealCard({ deal, onMoveStage, onDelete, suggestion, isLo
       <select
         value={deal.stage}
         onChange={(e) => onMoveStage(deal.id, e.target.value)}
-        className="w-full mt-2.5 bg-gray-900 border border-gray-700 rounded-md px-2 py-1.5 text-xs text-gray-200 focus:outline-none focus:border-indigo-500 cursor-pointer"
+        className="w-full mt-2.5 bg-gray-900 border border-gray-700 rounded-md px-2 py-1.5 text-xs text-gray-200 focus:outline-none focus:border-teal-500 cursor-pointer"
       >
         {STAGES.map(stage => (
           <option key={stage} value={stage}>{stage}</option>
@@ -42,7 +42,7 @@ export default function DealCard({ deal, onMoveStage, onDelete, suggestion, isLo
       <button
         onClick={() => onSuggest(deal)}
         disabled={isLoadingSuggestion}
-        className="w-full mt-2 flex items-center justify-center gap-1.5 text-xs bg-indigo-600/20 hover:bg-indigo-600/40 border border-indigo-700/50 text-indigo-300 px-2 py-1.5 rounded-md transition-colors disabled:opacity-60"
+        className="w-full mt-2 flex items-center justify-center gap-1.5 text-xs bg-teal-600/20 hover:bg-teal-600/40 border border-teal-700/50 text-teal-300 px-2 py-1.5 rounded-md transition-colors disabled:opacity-60"
       >
         {isLoadingSuggestion ? (
           <>
@@ -61,7 +61,7 @@ export default function DealCard({ deal, onMoveStage, onDelete, suggestion, isLo
       {suggestion !== undefined && suggestion !== '' && (
         <div className="mt-2 text-xs text-gray-300 bg-gray-900/60 border border-gray-700/50 rounded-md px-2.5 py-2 leading-relaxed">
           {suggestion}
-          {isLoadingSuggestion && <span className="inline-block w-1 h-3 bg-indigo-400 ml-0.5 animate-pulse align-middle" />}
+          {isLoadingSuggestion && <span className="inline-block w-1 h-3 bg-teal-400 ml-0.5 animate-pulse align-middle" />}
         </div>
       )}
     </div>
