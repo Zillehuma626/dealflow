@@ -41,7 +41,7 @@ export default function PipelineBoard({
   }
 
   return (
-    <div className="flex gap-4 overflow-x-auto pb-4 h-full scrollbar-hide">
+    <div className="flex items-start gap-4 overflow-x-auto pb-4 h-full snap-x snap-mandatory sm:snap-none scrollbar-hide">
       {STAGES.map(stage => {
         const stageDeals = deals.filter(d => d.stage === stage)
         const stageTotal = stageDeals.reduce((sum, d) => sum + Number(d.value), 0)
@@ -49,7 +49,7 @@ export default function PipelineBoard({
         return (
           <div
             key={stage}
-            className={`flex-shrink-0 w-[80vw] max-w-xs sm:w-72 sm:max-w-none bg-gray-900/50 border border-gray-800 border-t-2 ${STAGE_COLORS[stage]} rounded-lg flex flex-col max-h-full`}
+            className={`flex-shrink-0 w-[85vw] sm:w-72 snap-center sm:snap-align-none bg-gray-900/50 border border-gray-800 border-t-2 ${STAGE_COLORS[stage]} rounded-lg flex flex-col max-h-full`}
           >
             <div className="px-3 py-2.5 flex items-center justify-between border-b border-gray-800">
               <div className="flex items-center gap-2">
